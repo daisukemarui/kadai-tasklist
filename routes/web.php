@@ -13,4 +13,8 @@
 
 Route::get('/', function () {
     return view('welcome');
+    Route::get('Task/{id}', 'TaskController@show');
+    Route::post('Task', 'TaskController@store');
+    Route::put('Task/{id}', 'TasksController@update');
+    Route::delete('Task/{id}', 'TasksController@destroy');
 });
