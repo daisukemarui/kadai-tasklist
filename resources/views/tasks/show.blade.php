@@ -7,7 +7,7 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>id</th>
+            <th>タイトル</th>
             <td>{{ $task->id }}</td>
         </tr>
         <tr>
