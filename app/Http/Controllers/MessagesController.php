@@ -33,7 +33,7 @@ class MessagesController extends Controller
      */
     public function create()
     {
-        $message = new masege;
+        $message = new Message;
 
         return view('messages.create', [
             'message' => $message,
@@ -50,10 +50,12 @@ class MessagesController extends Controller
     
     {
         $this->validate($request, [
+             'title' => 'required|max:191',
             'content' => 'required|max:191',
         ]);
 
-        $message = new message;
+        $message = new Message;
+        $message->title = $request->title;
         $message->content = $request->content;
         $message->save();
 
@@ -68,7 +70,7 @@ class MessagesController extends Controller
      */
     public function show($id)
     {
-         $message = message::find($id);
+         $message = Message::find($id);
 
         return view('messages.show', [
             'message' => $message,
@@ -83,7 +85,7 @@ class MessagesController extends Controller
      */
     public function edit($id)
     {
-          $message = message::find($id);
+          $message = Message::find($id);
 
         return view('massages.edit', [
             'message' => $message,
@@ -100,9 +102,11 @@ class MessagesController extends Controller
     public function update(Request $request, $id)
     {
          $this->validate($request, [
+             'title' => 'required|max:191',
             'content' => 'required|max:191',
         ]);
-        $message = message::find($id);
+        $message = Message::find($id);
+         $message->title = $request->title; 
         $message->content = $request->content;
         $message->save();
 
@@ -117,7 +121,7 @@ class MessagesController extends Controller
      */
     public function destroy($id)
     {
-        $message = message::find($id);
+        $message = Message::find($id);
         $message->delete();
 
         return redirect('/');
