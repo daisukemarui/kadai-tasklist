@@ -8,6 +8,15 @@
     </head>
 
     <body>
+        @include('commons.navbar')
+        
+        <div class="container">
+            @include('commons.error_messages')
+            
+            @yield('content')
+        </div>
+        
+        <!-- JavaScriptの定義は省略 -->
         <header class="mb-4">
             <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
                 <a class="navbar-brand" href="/">タスクリスト</a>
