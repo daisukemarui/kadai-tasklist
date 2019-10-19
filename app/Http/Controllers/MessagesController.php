@@ -21,11 +21,11 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+/*    public function index()
     {
         //
     }
-
+*/
     /**
      * Show the form for creating a new resource.
      *
@@ -33,7 +33,11 @@ class MessagesController extends Controller
      */
     public function create()
     {
-        //
+        $message = new masege;
+
+        return view('messages.create', [
+            'message' => $message,
+        ]);
     }
 
     /**
@@ -43,8 +47,17 @@ class MessagesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+    
     {
-        //
+        $this->validate($request, [
+            'content' => 'required|max:191',
+        ]);
+
+        $message = new message;
+        $message->content = $request->content;
+        $message->save();
+
+        return redirect('/');
     }
 
     /**
@@ -55,7 +68,11 @@ class MessagesController extends Controller
      */
     public function show($id)
     {
-        //
+         $message = message::find($id);
+
+        return view('messages.show', [
+            'message' => $message,
+    ]);
     }
 
     /**
@@ -66,7 +83,11 @@ class MessagesController extends Controller
      */
     public function edit($id)
     {
-        //
+          $message = message::find($id);
+
+        return view('massages.edit', [
+            'message' => $message,
+        ]);
     }
 
     /**
@@ -78,7 +99,14 @@ class MessagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $this->validate($request, [
+            'content' => 'required|max:191',
+        ]);
+        $message = message::find($id);
+        $message->content = $request->content;
+        $message->save();
+
+        return redirect('/');
     }
 
     /**
@@ -89,6 +117,9 @@ class MessagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $message = message::find($id);
+        $message->delete();
+
+        return redirect('/');
     }
 }

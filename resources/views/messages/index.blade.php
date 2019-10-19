@@ -1,6 +1,4 @@
-@extends('layouts.app')
 
-@section('content')
 
 <!-- ここにページ毎のコンテンツを書く -->
 
@@ -21,7 +19,7 @@
             <tbody>
                 @foreach ($messages as $message)
                 <tr>
-                    <td>{{ $message->id }}</td>
+                    <td>{!! link_to_route('messages.show', $message->id,['id' => $message->id]) !!}</td>
                     <td>{{ $message->content }}</td>
                 </tr>
                 @endforeach
@@ -31,5 +29,4 @@
     
     {!! link_to_route('messages.create', '新規メッセージの投稿', [], ['class' => 'btn btn-primary']) !!}
 
-@endsection
 @endsection
