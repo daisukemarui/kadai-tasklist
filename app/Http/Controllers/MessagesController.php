@@ -87,7 +87,7 @@ class MessagesController extends Controller
     {
           $message = Message::find($id);
 
-        return view('massages.edit', [
+        return view('messages.edit', [
             'message' => $message,
         ]);
     }
