@@ -1,13 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
- @if (count($errors) > 0)
-        <ul class="alert alert-danger" role="alert">
-            @foreach ($errors->all() as $error)
-                <li class="ml-4">{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+
 <!-- ここにページ毎のコンテンツを書く -->
   <h1>id: {{ $task->id }} のメッセージ編集ページ</h1>
 
@@ -15,8 +9,8 @@
         <div class="col-6">
             {!! Form::model($task, ['route' => ['tasks.update', $task->id], 'method' => 'put']) !!}
                 <div class="form-group">
-                    {!! Form::label(' status', 'ステータス:') !!}
-                    {!! Form::text(' status', null, ['class' => 'form-control']) !!}
+                    {!! Form::label('status', 'ステータス:') !!}
+                    {!! Form::text('status', null, ['class' => 'form-control']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('content', 'メッセージ:') !!}
